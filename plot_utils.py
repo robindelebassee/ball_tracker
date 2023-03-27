@@ -16,7 +16,7 @@ def plot_trajectories(x_coord, y_coord):
     ax[1].set_ylabel('y-direction')
 
     fig.suptitle('Trajectories of the ball wrt to x,y direction', fontsize=15)
-    plt.savefig('trajectories.png')
+    plt.savefig('images/trajectories.png')
 
 
 def plot_trajectories_kalman(x_coord, y_coord, tracked_pos):
@@ -50,4 +50,4 @@ def plot_trajectories_kalman(x_coord, y_coord, tracked_pos):
 
     fig.suptitle(
         'Trajectories of the ball wrt to x,y direction - Kalman filter results', fontsize=15)
-    plt.savefig('trajectories_kalman.png')
+    plt.savefig('images/trajectories_kalman.png')
