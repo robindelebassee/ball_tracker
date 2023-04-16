@@ -1,42 +1,17 @@
 # ball_tracker
+
 Tracker tool to follow the ball in volleyball video tapes
 
-
-Link to Google Drive data repo for the project 
+Link to Google Drive data repo for the project
 https://drive.google.com/drive/folders/1EhpmRTL258UyIT3EJpO_CIbpX_SZIpX9?usp=sharing
 
+Link to the final report of our project :
+https://www.overleaf.com/read/bxpgmqcxtztf
 
-Possible approaches for ball-tracking : 
+The main experiments using image processing techniques to detect and track the ball are in the `image_processing_methods.ipynb` notebook. The graphs resulting from these experiments are in the `images` folder.
 
-Color based approach : 
-    Ball is either green/white/red or blue/yellow. Could be simple enough and work fine on some video.
-    Problem for generalization, if background is same color than the ball or if ball color is new.
-    If the ball move too quickly the colors fade on the frames and make detection more difficult.
-    
-Hough circles approach : 
-    Detect ball using Hough circles. Search to explain how it works.
-    First results seem limited because the ball quality on the frame is too low.
-    
-Background/Forground extraction : 
-    Extract from image the moving objects, among which the ball should be.
-    Look for the highest node detected, there are good chances it's the ball.
-    
-Super Pixel : 
-    Transforming frames using superpixel to see if it allows for a better ball detection. 
-    (i.e. if it can be detected as a cluster of superpixels)
+The fine tuning of YOLOv8 model on a Roboflow dataset containing volleyball annotations (https://universe.roboflow.com/volleyball-tracking/volleyball-tracking/dataset/13) is done in the `yolo_v8_train.ipynb` notebook.
 
-K-means :
-    Can be used after superpixel.
+Finally, the annotation of videos with bounding boxes detected with our fine tuned YOLO model is done in `yolo_v8_detection.py`. The annotated videos are stored in the `video_output` directory.
 
-Mean Shift : 
-    Used to be state of the art for a while.
-    Can be used after superpixel ?
-
-Region based approach : 
-    To keep spatial consistance (and allow to process the ball as one entity ?)
-
-Graph based approach :
-    Process pixels as nodes of a graph, edges are similarity relations between concurrent pixels. 
-    Regionalization computed through minimal cost graph cut --> region detection.
-    
-           
+Some examples of input videos that we used can be found in the `videos` repository. These videos are taken from https://vball.io/game/Volleibol_test/.
