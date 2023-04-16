@@ -194,12 +194,12 @@ def get_mask_color(current_hsv):
     Return mask with values 0 and 1 if color looks like a ball
     """
     range_color = []
-    lower_blue = np.array([110,50,50])
-    upper_blue = np.array([130,255,255])
+    lower_blue = np.array([20,40,40])
+    upper_blue = np.array([140,255,255])
     range_color.append((lower_blue, upper_blue))
     
-    lower_yellow = np.array([20, 41, 100])
-    upper_yellow = np.array([40, 255, 255])
+    lower_yellow = np.array([15, 20, 50])
+    upper_yellow = np.array([42, 255, 255])
     range_color.append((lower_yellow, upper_yellow))
     
     low_green = np.array([25, 52, 72])
@@ -210,16 +210,16 @@ def get_mask_color(current_hsv):
     upper_red = np.array([179, 255, 255])
     range_color.append((low_red, upper_red))
     
-    lower_white = np.array([0,0,255-10])
-    upper_white = np.array([255,10,255])
+    lower_white = np.array([0,0,231])
+    upper_white = np.array([180,18,255])
     range_color.append((lower_white, upper_white))
 
     i=0
     for lower_bound, upper_bound in range_color:
         if i==0:
-            mask = cv2.inRange(current_hsv, lower_bound, upper_bound)
+            mask = np.array(cv2.inRange(current_hsv, lower_bound, upper_bound))
             i+=1
         else:
-            mask += cv2.inRange(current_hsv, lower_bound, upper_bound)
+            mask += np.array(cv2.inRange(current_hsv, lower_bound, upper_bound))
     mask[mask>=1] = 1
     return mask
